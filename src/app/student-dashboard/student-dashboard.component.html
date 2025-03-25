@@ -1,0 +1,60 @@
+<!-- admin-dashboard.component.html -->
+<div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <h6 class="sidebar-heading px-3 mt-4 mb-1 text-dark">
+            <i class="fas fa-users-cog me-2"></i>User Management
+          </h6>
+          <ul class="nav flex-column">
+            <li class="nav-item ">
+              <a class="nav-link text-muted" 
+                 routerLink="/admin-dashboard/students" 
+                 routerLinkActive="active">
+                <i class="fas fa-user-graduate me-2 "></i>Details 
+              </a>
+            </li>
+            <!-- <li class="nav-item ">
+              <a class="nav-link text-muted" 
+                 routerLink="/admin-dashboard/teachers" 
+                 routerLinkActive="active">
+                <i class="fas fa-chalkboard-teacher me-2 "></i>Teachers
+              </a>
+            </li> -->
+          </ul>
+  
+          <h6 class="sidebar-heading px-3 mt-4 mb-1 text-dark">
+            <i class="fas fa-cogs me-2"></i>Settings
+          </h6>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-muted" routerLink="/profile" routerLinkActive="active">
+                <i class="fas fa-user-circle me-2"></i>Profile
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+      <!-- Main Content -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <!-- Header Section -->
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h3 class="h3 text-dark">
+            Student Dashboard
+          </h3>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <button class="btn btn-sm btn-outline-secondary" (click)="authService.logout()">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </button>
+          </div>
+        </div>
+  
+        <!-- Content Section -->
+        <div class="content-wrapper">
+          <router-outlet></router-outlet> 
+        </div>
+      </main>
+    </div>
+  </div>

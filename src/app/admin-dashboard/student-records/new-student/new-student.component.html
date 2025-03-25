@@ -1,0 +1,89 @@
+<div class="modal fade show" tabindex="-1" role="dialog" style="display: block; background: rgba(0,0,0,0.5)">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-between">
+        <h5 class="modal-title text-dark">NEW STUDENT</h5>
+        <button type="button" class="close " (click)="onCancel()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label>First Name</label>
+              <input type="text" class="form-control text-muted" formControlName="firstName" required>
+              <div *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched"
+                class="text-danger">
+                First Name is required
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Last Name</label>
+              <input class="form-control text-muted" formControlName="lastName" required>
+              <div *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched"
+                class="text-danger">
+                Last Name is required
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group ">
+            <label>Email</label>
+            <input class="form-control text-muted" formControlName="email" required>
+            <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="text-danger">
+              Valid email is required
+            </div>
+          </div>
+          <div class="form-group ">
+            <label>Phone Number</label>
+            <input type="text" class="form-control text-muted" formControlName="phoneNumber" required>
+            <div *ngIf="studentForm.get('phoneNumber')?.invalid && studentForm.get('phoneNumber')?.touched"
+              class="text-danger">
+              Valid phone number is required
+            </div>
+          </div>
+
+          <!-- <div class="form-group text-muted">
+                <label>Class</label>
+                <input class="form-control" formControlName="className" required>
+                <div *ngIf="studentForm.get('className')?.invalid && studentForm.get('className')?.touched" 
+                     class="text-danger">
+                  Valid class is required
+                </div>
+              </div> -->
+
+
+          <!-- In your template -->
+          <div class="form-group ">
+            <label>Class</label>
+            <select #classSelect formControlName="className" class="form-select text-muted">
+
+              <option *ngFor="let className of uniqueClassNames" [value]="className">
+                {{ className }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group ">
+            <label>Section</label>
+            <select #classSelect formControlName="sectionName" class="form-select text-muted">
+
+              <option *ngFor="let sectionName of uniqueSectionNames" [value]="sectionName">
+                {{ sectionName }}
+              </option>
+            </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-outline-success" [disabled]="studentForm.invalid">
+              Save Student
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

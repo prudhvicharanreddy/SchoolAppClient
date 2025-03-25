@@ -1,0 +1,35 @@
+<!-- admin-dashboard.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Main Content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-12 px-0 py-3">
+
+      <!-- Content Section -->
+      <div class="content-wrapper">
+        <!-- Teachers Section -->
+        <div class="mb-5">
+          <div class="d-flex justify-content-between align-items-center mb-3 ">
+            <h5><i class="fas fa-chalkboard-teacher me-3"></i>Teacher Management</h5>
+            <a (click)="showModal = true" class="btn btn-primary">
+              <i class="fas fa-plus-circle me-2"></i> New Teacher
+            </a>
+          </div>
+          <app-new-teacher *ngIf="showModal" [teacherData]="selectedTeacher" (save)="addNewTeacher($event)"
+            (cancel)="handleModalClose()">
+          </app-new-teacher>
+
+          <!-- Teachers Table -->
+          <div class="card-body p-0">
+            <ag-grid-angular class="ag-theme-alpine" [rowData]="teachers" [columnDefs]="teacherColumnDefs"
+              [domLayout]="'autoHeight'" [pagination]="true" [paginationPageSize]="10"
+              (gridReady)="onTeacherGridReady($event)">
+            </ag-grid-angular>
+          </div>
+        </div>
+
+
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>

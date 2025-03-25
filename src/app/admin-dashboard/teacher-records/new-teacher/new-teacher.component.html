@@ -1,0 +1,135 @@
+<div class="modal fade show" tabindex="-1" role="dialog" style="display: block; background: rgba(0,0,0,0.5)">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-between">
+                <h5 class="modal-title">{{ teacherData ? 'EDIT' : 'NEW' }} TEACHER</h5>
+                <button type="button" class="close" (click)="onCancel()">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
+                    <!-- Personal Info -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>FIRST NAME</label>
+                            <input type="text" class="form-control" formControlName="firstName">
+                            <div *ngIf="teacherForm.get('firstName')?.invalid && teacherForm.get('firstName')?.touched"
+                                class="text-danger">
+                                First Name is required
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>LAST NAME </label>
+                            <input type="text" class="form-control" formControlName="lastName">
+                            <div *ngIf="teacherForm.get('lastName')?.invalid && teacherForm.get('lastName')?.touched"
+                                class="text-danger">
+                                Last Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>EMAIL</label>
+                            <input type="email" class="form-control" formControlName="email">
+                            <div *ngIf="teacherForm.get('email')?.invalid && teacherForm.get('email')?.touched"
+                                class="text-danger">
+                                Valid email is required
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>PHONE NUMBER</label>
+                            <input type="text" class="form-control" formControlName="phoneNumber">
+                            <div *ngIf="teacherForm.get('phoneNumber')?.invalid && teacherForm.get('phoneNumber')?.touched"
+                                class="text-danger">
+                                10-digit phone number required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Assignments -->
+                    <div class="mb-3" formArrayName="classAssignments">
+                        <div class="d-flex justify-content-between align-items-center mb-3 sub-header">
+                            <h6>CLASS ASSIGNMENT</h6>
+                            <button type="button" class="btn btn-sm btn-primary" (click)="addClassAssignment()">
+                                <i class="fas fa-plus"></i> Add Class
+                            </button>
+                        </div>
+
+                        <div *ngFor="let assignment of classAssignments.controls; let i = index" [formGroupName]="i"
+                            class="assignment-group mb-3 p-3 border rounded">
+                            <div class="row">
+                                <!-- Class Dropdown -->
+                                <div class="col-md-4">
+                                    <label>CLASS</label>
+                                    <select class="form-control" formControlName="className"
+                                        (change)="onClassChange(i, $event)">
+                                        <option style="font-size:x-small !important" value="">--Select--</option>
+                                        <option *ngFor="let cls of uniqueClassNames" [value]="cls">
+                                            {{ cls }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="classAssignments.at(i).get('className')?.invalid && 
+                                              classAssignments.at(i).get('className')?.touched" class="text-danger">
+                                        Class is required
+                                    </div>
+                                </div>
+
+                                <!-- Section Dropdown -->
+                                <div class="col-md-3">
+                                    <label>SECTION</label>
+                                    <select class="form-control" formControlName="sectionName">
+                                        <option value="">--Select--</option>
+                                        <option *ngFor="let section of getSections(i)" [value]="section">
+                                            {{ section }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="classAssignments.at(i).get('sectionName')?.invalid && 
+                                              classAssignments.at(i).get('sectionName')?.touched" class="text-danger">
+                                        Section is required
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label>SUBJECT</label>
+                                    <select class="form-control" formControlName="subjectName">
+
+                                        <option value="" disabled selected>--Select--</option>
+                                        <option value="English">English</option>
+                                        <option value="Hindi">Hindi</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Sanskrit">Sanskrit</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Social">Social</option>
+                                        <option value="Telugu">Telugu</option>
+
+
+                                    </select>
+                                    <div *ngIf="classAssignments.at(i).get('subjectName')?.invalid && 
+                                              classAssignments.at(i).get('subjectName')?.touched" class="text-danger">
+                                        Subject is required
+                                    </div>
+                                </div>
+                                <div class="col-md-1 d-flex align-items-end">
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="removeClassAssignment(i)" [disabled]="classAssignments.length === 1">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="teacherForm.invalid">
+                            {{ teacherData ? 'Update' : 'Save' }} Teacher
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

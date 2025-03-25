@@ -1,1 +1,130 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* Add Bootstrap theme customizations */
+:root {
+  --bs-body-bg: #f8f9fa;
+  --bs-primary: #0d6efd;
+}
+
+.card {
+  border-radius: 1rem;
+  border: none;
+}
+
+
+
+.invalid-feedback {
+  display: block;
+  font-size: 0.875em;
+}
+
+
+
+/* Apply font to entire application */
+* {
+  font-family: "Open Sans", monospace;
+  letter-spacing: 1.5px;
+
+}
+
+
+/* For Modal pop ups */
+.modal {
+  backdrop-filter: blur(3px);  /* To blur the background when the pop-up is opened */
+}
+
+.modal-content {
+  animation: modalOpen 0.3s ease-out; 
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast-success {
+  background-color: #000000 !important;  /* black shade */
+  border-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.toast-error {
+  background-color: #cf6034 !important;  /* orange shade */
+  border-color: #f7ac76 !important;
+  color: #ffffff !important;
+}
+
+
+.sidebar {
+  background: radial-gradient(#37656c, #000000);
+} 
+
+.btn-primary {
+  padding: 0.5rem 1rem;
+  background: radial-gradient( #3598a8, #37656c);
+}
+
+.btn-danger {
+  padding: 0.5rem 1rem;
+  background: radial-gradient( #c38a3b, #cf6034 );
+}
+
+
+
+/* Add these styles */
+/* AG Grid Header Customization */
+.ag-header {
+  background-color: #2c3e50 !important;
+  /*border-bottom: 2px solid #e67e22 !important;*/
+}
+
+.ag-header-cell-label {
+  color: #ecf0f1 !important;
+  font-weight: bold !important;
+  font-family: 'Arial', sans-serif !important;
+}
+
+.ag-header-cell:hover {
+  background-color: #34495e !important;
+  cursor: pointer;
+}
+.ag-cell{
+  background-color: #cadbd8 !important;
+}
+
+
+
+.modal-header {
+  background: linear-gradient(145deg, #ffffff,rgb(106, 153, 160), #40727a);
+}
+
+label{
+
+display: block;
+font-size: 0.8rem;
+letter-spacing: 4px;
+color: #4c4c4c;
+opacity: 0.8;
+
+}
+
+.modal-title{
+display: block;
+letter-spacing: 3px;
+color: #cf6034;
+font-weight: bold;
+
+}
+
+.sub-header{
+display: block;
+letter-spacing: 1.5px;
+font-weight: bold;
+margin-top: 5px;
+}
+

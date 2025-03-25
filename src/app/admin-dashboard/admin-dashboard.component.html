@@ -1,0 +1,85 @@
+<!-- admin-dashboard.component.html -->
+<div class="container-fluid min-vh-100 d-flex flex-column">
+  <!-- Full-width Header -->
+  <header class="border-bottom">
+    <div class="d-flex justify-content-between align-items-center px-4 py-2">
+      <div class="dashboard-brand">
+        <span class="brand-text">ST.GEORGE</span>
+        <span class="brand-subtext">INTERNATIONAL SCHOOL</span>
+        <div class="holographic-overlay"></div>
+        <div class="particle-trail"></div>
+      </div>
+      <!-- <div class="dashboard-brand">
+        <span class="brand-text">ADMIN</span>
+        <span class="brand-subtext">DASHBOARD</span>
+        <div class="holographic-overlay"></div>
+        <div class="particle-trail"></div>
+      </div> -->
+
+      <button class="btn  btn-danger" (click)="authService.logout()">
+        <i class="fas fa-sign-out-alt me-2 "></i>Logout
+      </button>
+    </div>
+  </header>
+
+  <div class="row min-vh-100">
+    <!-- Sidebar -->
+    <nav class="col-md-2 d-none d-md-block sidebar" style=" background-color: #6c757d;
+">
+      <div class="sidebar-sticky">
+        <h5 class="sidebar-heading px-3 mt-4 mb-1 text-white">
+          <i class="fas fa-users-cog me-2"></i>User Management
+        </h5>
+        <ul class="nav flex-column">
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="/admin-dashboard/students" routerLinkActive="active">
+              <i class="fas fa-user-graduate me-2 "></i>Students
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="/admin-dashboard/teachers" routerLinkActive="active">
+              <i class="fas fa-chalkboard-teacher me-2 "></i>Teachers
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="/admin-dashboard/classes" routerLinkActive="active">
+              <i class="fa-solid fa-landmark me-2 "></i>Classes
+            </a>
+          </li>
+        </ul>
+
+        <h5 class="sidebar-heading px-3 mt-4 mb-1 text-white">
+          <i class="fas fa-cogs me-2"></i>Settings
+        </h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/profile" routerLinkActive="active">
+              <i class="fas fa-user-circle me-2"></i>Profile
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main" class="col-md-10 px-4 h-100">
+      <!-- Header Section -->
+      <!-- <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h3 class="h3 text-dark">
+          Admin Dashboard
+        </h3>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <button class="btn btn-sm btn-outline-secondary" (click)="authService.logout()">
+            <i class="fas fa-sign-out-alt me-2"></i>Logout
+          </button>
+        </div>
+      </div> -->
+
+      <!-- Content Section -->
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>

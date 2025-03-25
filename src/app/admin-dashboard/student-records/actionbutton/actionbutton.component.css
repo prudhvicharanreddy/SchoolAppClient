@@ -1,0 +1,12 @@
+.action-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  .btn-link {
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  .btn-link:hover {
+    opacity: 0.8;
+  }
